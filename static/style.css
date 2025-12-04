@@ -1,0 +1,102 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f0f2ff; /* Lighter blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #1d9bf0; /* Twitter Blue */
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-sizing: border-box; /* Important for padding to work well */
+    margin-top: 1rem;
+    font-family: inherit;
+    resize: vertical;
+}
+
+button, .button-link {
+    background-color: #1d9bf0;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    cursor: pointer;
+    margin-top: 1.5rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, .button-link:hover {
+    background-color: #0c85d0;
+    transform: translateY(-2px);
+}
+
+/* Result Page Specifics */
+h3 {
+    text-align: left;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    margin-top: 2rem;
+}
+
+.tweet-box {
+    background: #f9f9f9;
+    border-left: 5px solid #1d9bf0;
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-style: italic;
+    color: #333;
+    border-radius: 0 5px 5px 0;
+    margin: 1rem 0;
+}
+
+.result {
+    font-size: 1.8rem;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.positive {
+    color: #17bf63; /* Twitter Green */
+    background-color: rgba(23, 191, 99, 0.05);
+}
+
+.negative {
+    color: #e0245e; /* Twitter Red */
+    background-color: rgba(224, 36, 94, 0.05);
+}
