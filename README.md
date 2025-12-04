@@ -42,6 +42,7 @@ twitter-sentiment-analysis/
 
 - Python 3.7+
 - pip package manager
+- Dataset Link:https://www.kaggle.com/datasets/kazanova/sentiment140
 
 ### Setup Steps
 
