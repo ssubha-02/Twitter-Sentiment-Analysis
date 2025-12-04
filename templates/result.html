@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Analysis Result</h1>
+        
+        <h3>Original Text:</h3>
+        <blockquote class="tweet-box">
+            {{ tweet }}
+        </blockquote>
+        
+        {% if prediction == 'Positive' %}
+            <h2 class="result positive">Sentiment: {{ prediction }} ({{ confidence }}% Confident) 😊</h2>
+        {% else %}
+            <h2 class="result negative">Sentiment: {{ prediction }} ({{ confidence }}% Confident) 😞</h2>
+        {% endif %}
+
+        <div style="width: 90%; max-width: 300px; margin: 2rem auto;">
+            <canvas id="sentimentChart"></canvas>
+        </div>
+        
+        <a href="/" class="button-link">Analyze Another Tweet</a>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('sentimentChart').getContext('2d');
+        
+        // Get data from Flask (using Jinja templates)
+        const probNeg = {{ prob_neg }};
+        const probPos = {{ prob_pos }};
+
+        new Chart(ctx, {
+            type: 'doughnut', // <-- This is the only line that changed from 'bar'
+            data: {
+                labels: ['Negative', 'Positive'],
+                datasets: [{
+                    label: 'Sentiment Probability',
+                    data: [probNeg, probPos],
+                    backgroundColor: [
+                        'rgba(224, 36, 94, 0.8)', // Red for Negative
+                        'rgba(23, 191, 99, 0.8)'  // Green for Positive
+                    ],
+                    borderColor: [
+                        'rgba(224, 36, 94, 1)',
+                        'rgba(23, 191, 99, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
